@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -35,14 +36,11 @@ class LifeCycle(models.Model):
     closed = models.DateField(null = True)
 
 
-class User(models.Model):
+class UserProfile(models.Model):
     class Meta:
-        db_table = "Users"
+        db_table = "UserProfiles"
 
-    id = models.AutoField(primary_key = True)
-    name = models.CharField(max_length = 50)
-    login = models.CharField(max_length = 50)
-    password = models.CharField(max_length = 50)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key = True)
     position = models.CharField(max_length = 50)
     department = models.ForeignKey(Department, null = True, on_delete = models.SET_NULL)
     role = models.ForeignKey(Role, on_delete = models.CASCADE)
@@ -68,7 +66,7 @@ class Request(models.Model):
     priority = models.IntegerField()
     activ = models.ForeignKey(Activ, null = True, on_delete = models.SET_NULL)
     category = models.ForeignKey(Category, null = True, on_delete = models.SET_NULL)
-    user = models.ForeignKey(User, null = True, on_delete = models.SET_NULL)
+    user = models.ForeignKey(UserProfile, null = True, on_delete = models.SET_NULL)
     executor = models.IntegerField(null = True)
     lifecycle = models.ForeignKey(LifeCycle, on_delete = models.CASCADE)
 
