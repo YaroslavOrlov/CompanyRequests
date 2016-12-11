@@ -45,6 +45,9 @@
     <Compile Include="requests\migrations\__init__.py" />
     <Compile Include="requests\models.py" />
     <Compile Include="requests\tests.py" />
+    <Compile Include="requests\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="requests\views.py" />
     <Compile Include="requests\__init__.py" />
   </ItemGroup>
@@ -61,6 +64,7 @@
     <Folder Include="CompanyRequests\" />
     <Folder Include="requests\" />
     <Folder Include="requests\migrations\" />
+    <Folder Include="requests\static\" />
     <Folder Include="requests\templates\" />
   </ItemGroup>
   <ItemGroup>
