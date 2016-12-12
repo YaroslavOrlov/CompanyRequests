@@ -1,0 +1,27 @@
+﻿{% load staticfiles %}
+
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link type="text/css" href={% static "main.css"%} rel="stylesheet" />
+    {% block title %}
+    {% endblock %}
+</head>
+<body>
+    <div id="header">
+        {% block header %}
+        {% endblock %}
+    </div>
+    <div id="main">
+        {% block main %}
+        {% endblock %}
+    </div>
+    <div id="righttmenu">
+        {% block leftmenu %}
+        {% endblock %}
+    </div>
+    <div id="footer">
+        <p>All rights are secure!</p>
+    </div>
+</body>
+</html>

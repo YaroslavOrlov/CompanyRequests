@@ -2320,3 +2320,49 @@ C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Micro
 2016-12-05T13:17:02: Saving group "F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\django"
 2016-12-05T13:17:08: End of group "F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\django"
 2016-12-05T13:17:09: Deleting 0 files
+
+2016-12-11T21:53:52: Start analysis
+2016-12-11T21:53:52: [WARNING] Library was set explicitly - skipping path detection
+2016-12-11T21:53:52: IncludeModulesFromModulePath = win32com
+2016-12-11T21:53:53: Deleting 0 files
+
+2016-12-11T21:54:15: Start analysis
+2016-12-11T21:54:15: [WARNING] Library was set explicitly - skipping path detection
+2016-12-11T21:54:15: IncludeModulesFromModulePath = win32com
+2016-12-11T21:54:16: Deleting 0 files
+2016-12-11T21:54:16: astropy.CallDepth = 0
+2016-12-11T21:54:16: matplotlib.CallDepth = 3
+2016-12-11T21:54:16: pandas.CallDepth = 0
+2016-12-11T21:54:16: sympy.CallDepth = 0
+2016-12-11T21:54:16: Start group "F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\userroles" with 10 files
+2016-12-11T21:54:16: Parsing "userroles.decorators" ("F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\userroles\decorators.py")
+2016-12-11T21:54:16: Parsing "userroles.models" ("F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\userroles\models.py")
+2016-12-11T21:54:16: Parsing "userroles.tests" ("F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\userroles\tests.py")
+2016-12-11T21:54:16: Parsing "userroles.utils" ("F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\userroles\utils.py")
+2016-12-11T21:54:16: Parsing "userroles" ("F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\userroles\__init__.py")
+2016-12-11T21:54:16: Parsing "userroles.migrations" ("F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\userroles\migrations\__init__.py")
+2016-12-11T21:54:16: Parsing "userroles.testapp.models" ("F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\userroles\testapp\models.py")
+2016-12-11T21:54:16: Parsing "userroles.testapp.urls" ("F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\userroles\testapp\urls.py")
+2016-12-11T21:54:16: Parsing "userroles.testapp.views" ("F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\userroles\testapp\views.py")
+2016-12-11T21:54:16: Parsing "userroles.testapp" ("F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\userroles\testapp\__init__.py")
+2016-12-11T21:54:16: Parsing complete
+2016-12-11T21:54:16: Analyzing "userroles.decorators"
+2016-12-11T21:54:16: Analyzing "userroles.models"
+2016-12-11T21:54:16: Analyzing "userroles.tests"
+2016-12-11T21:54:16: Analyzing "userroles.utils"
+2016-12-11T21:54:16: Analyzing "userroles"
+2016-12-11T21:54:16: Analyzing "userroles.migrations"
+2016-12-11T21:54:16: Analyzing "userroles.testapp.models"
+2016-12-11T21:54:16: Analyzing "userroles.testapp.urls"
+2016-12-11T21:54:16: Analyzing "userroles.testapp.views"
+2016-12-11T21:54:16: Analyzing "userroles.testapp"
+2016-12-11T21:54:16: Starting analysis of 10 modules
+2016-12-11T21:54:24: Analysis complete
+2016-12-11T21:54:24: Saving group "F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\userroles"
+2016-12-11T21:54:25: End of group "F:\CompanyRequests\CompanyRequests\companyrequest\Lib\site-packages\userroles"
+2016-12-11T21:54:25: Deleting 0 files
+
+2016-12-11T22:11:17: Start analysis
+2016-12-11T22:11:17: [WARNING] Library was set explicitly - skipping path detection
+2016-12-11T22:11:17: IncludeModulesFromModulePath = win32com
+2016-12-11T22:11:17: Deleting 10 files

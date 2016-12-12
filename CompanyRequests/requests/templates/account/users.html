@@ -1,0 +1,92 @@
+﻿{% extends "base.html"%}
+
+{% block title %}
+{% endblock %}
+
+{% block header %}
+     <h1>Users list</h1>
+{% endblock %}
+
+{% block main %}
+    <h2>Users:</h2>
+    <table>
+        <tr>
+            <th>Full name</th>
+            <th>Login</th>
+            <th>Position</th>
+            <th>Department</th>
+            <th>Status</th>
+        </tr>
+        {% for user in object_list %}
+            <tr>
+                <td>
+                    <p>
+                       {{ user.user.first_name }} {{ user.user.last_name }}
+                    </p>
+                </td>
+                <td>
+                     <p>
+                        {{ user.user.username }}
+                      </p>
+                </td>
+                <td>
+                      <p>
+                        {{ user.position }}
+                      </p>
+                </td>
+                <td>
+                      <p>
+                        {{ user.department.name }}
+                      </p>
+                </td>
+                <td>
+                      <p>
+                        {% if user.user.is_active %}
+                            active
+                        {% else %}
+                            inactive
+                        {% endif %}
+                      </p>
+                </td>
+                <td>
+                    {% block rightmenu %}
+                        <ul>
+                             <li><a href="{% url "user_edit" user.user.id %}">Edit</a></li>
+                             <li><a href="{% url "user_delete" user.user.id %}">Delete</a></li>
+                        </ul>
+                    {% endblock %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url "user_add" %}">Add new user</a>
+    {% if paginator.num_pages > 0 %}
+        <div id="pagination">
+            {% if page_obj.has_previous %}
+                <div id="previous-page">
+                    <a href="{% url "accounts" %}?page={{ page_obj.previous_page_number }}">&lt;</a>
+                </div>
+            {% endif %}
+            {% if page_obj.has_next %}
+                <div id="next-page">
+                    <a href="{% url "accounts" %}?page={{ page_obj.next_page_number }}">&gt;</a>
+                </div>
+            {% endif %}
+            <div id="num-pages">
+                {% for pn in paginator.page_range %}
+                    {% if not forloop.first %}
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    {% endif %}
+                    {% if page_obj.number != pn %}
+                        <a href="{% url "accounts" %}?page={{ pn }}">
+                    {% endif %}
+                    {{ pn }}
+                    {% if page_obj.number != pn %}
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

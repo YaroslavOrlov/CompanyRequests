@@ -40,6 +40,9 @@
     <Compile Include="CompanyRequests\settings.py" />
     <Compile Include="CompanyRequests\urls.py" />
     <Compile Include="CompanyRequests\wsgi.py" />
+    <Compile Include="requests\accountviews.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="requests\admin.py" />
     <Compile Include="requests\apps.py" />
     <Compile Include="requests\migrations\__init__.py" />
@@ -65,10 +68,13 @@
     <Folder Include="requests\" />
     <Folder Include="requests\migrations\" />
     <Folder Include="requests\static\" />
+    <Folder Include="requests\templates\account\" />
     <Folder Include="requests\templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="requests\templates\index.html" />
+    <Content Include="requests\templates\account\users.html" />
+    <Content Include="requests\templates\account\user_add.html" />
+    <Content Include="requests\templates\base.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
