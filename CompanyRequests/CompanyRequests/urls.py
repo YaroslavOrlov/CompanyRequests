@@ -43,5 +43,6 @@ urlpatterns = [
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/', include("requests.urls")),
+    url(r'^accounts/', include("requests.accounturls")),
+    url(r'^services/', include("requests.serviceurls")),
 ]

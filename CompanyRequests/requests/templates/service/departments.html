@@ -1,0 +1,31 @@
+﻿{% extends "base.html" %}
+{% block title %} Departments: {% endblock %}
+
+{% block main %}
+<table>
+    <tr>
+        <th>&ensp;&ensp;</th>
+        <th>&ensp;&ensp;</th>
+    </tr>
+    {% for department in object_list %}
+        <tr>
+            <td>
+                <p>
+                    {{ department.name }}
+                </p>
+            </td>
+            <td>
+                {% block rightmenu %}
+                      <a href="{% url "department_edit" department.id %}">Edit</a> |
+                      <a href="{% url "department_delete" department.id %}">Delete</a>
+                {% endblock %}
+            </td>
+        </tr>
+    {% endfor %}
+</table> 
+<form action="{% url "department_add" %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="name" />
+    <input type="submit" value="Add department" />
+</form>
+{% endblock %}

@@ -4,7 +4,38 @@
 {% endblock %}
 
 {% block header %}
-     <h1>Users list</h1>
+    <h1>Users list</h1>
+    <div>
+        <form method="get" action="">
+            <table>
+                <tr>
+                     <td>
+                        <p>Department: </p>
+                    </td>
+                    <td> 
+                        <select name="department_id">
+                            <option value="all">all</option>
+                         {% for department in departments %}
+                            <option value="{{ department.id }}">{{ department.name }}</option>
+                         {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <p>Role: </p>
+                    </td>
+                    <td>
+                        <select name="role_id">
+                            <option value="all">all</option>
+                         {% for role in roles %}
+                            <option value="{{ role.id }}">{{ role.name }}</option>
+                         {% endfor %}
+                        </select>
+                    </td>
+                    <td><input type="submit" value="Filter" /> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 {% endblock %}
 
 {% block main %}
@@ -15,6 +46,7 @@
             <th>Login</th>
             <th>Position</th>
             <th>Department</th>
+            <th>Role</th>
             <th>Status</th>
         </tr>
         {% for user in object_list %}
@@ -39,6 +71,11 @@
                         {{ user.department.name }}
                       </p>
                 </td>
+                  <td>
+                      <p>
+                        {{ user.role.name }}
+                      </p>
+                </td>
                 <td>
                       <p>
                         {% if user.user.is_active %}
@@ -50,16 +87,15 @@
                 </td>
                 <td>
                     {% block rightmenu %}
-                        <ul>
-                             <li><a href="{% url "user_edit" user.user.id %}">Edit</a></li>
-                             <li><a href="{% url "user_delete" user.user.id %}">Delete</a></li>
-                        </ul>
+                         <a href="{% url "user_edit" user.user.id %}">Edit</a> |
+                         <a href="{% url "user_delete" user.user.id %}">Delete</a>
                     {% endblock %}
                 </td>
             </tr>
         {% endfor %}
     </table>
     <a href="{% url "user_add" %}">Add new user</a>
+    <a href="{% url "user_profile_add" %}">Add new user profile</a>
     {% if paginator.num_pages > 0 %}
         <div id="pagination">
             {% if page_obj.has_previous %}

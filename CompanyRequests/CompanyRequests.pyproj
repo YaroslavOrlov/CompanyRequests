@@ -47,8 +47,14 @@
     <Compile Include="requests\apps.py" />
     <Compile Include="requests\migrations\__init__.py" />
     <Compile Include="requests\models.py" />
+    <Compile Include="requests\serviceurls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="requests\serviceviews.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="requests\tests.py" />
-    <Compile Include="requests\urls.py">
+    <Compile Include="requests\accounturls.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="requests\views.py" />
@@ -70,11 +76,24 @@
     <Folder Include="requests\static\" />
     <Folder Include="requests\templates\account\" />
     <Folder Include="requests\templates\" />
+    <Folder Include="requests\templates\service\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="requests\templates\account\users.html" />
     <Content Include="requests\templates\account\user_add.html" />
+    <Content Include="requests\templates\account\user_profile_add.html" />
+    <Content Include="requests\templates\account\user_profile_delete.html" />
+    <Content Include="requests\templates\account\user_profile_edit.html" />
     <Content Include="requests\templates\base.html" />
+    <Content Include="requests\templates\service\activs.html" />
+    <Content Include="requests\templates\service\activ_delete.html" />
+    <Content Include="requests\templates\service\activ_edit.html" />
+    <Content Include="requests\templates\service\categories.html" />
+    <Content Include="requests\templates\service\category_delete.html" />
+    <Content Include="requests\templates\service\category_edit.html" />
+    <Content Include="requests\templates\service\departments.html" />
+    <Content Include="requests\templates\service\department_delete.html" />
+    <Content Include="requests\templates\service\department_edit.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />

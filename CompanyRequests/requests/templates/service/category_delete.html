@@ -1,0 +1,11 @@
+﻿{% extends "base.html"%}
+{% block title %}Delete category: {% endblock %}
+
+{% block main %}
+<p>{{ category.name }}</p>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Delete" />
+</form>
+{% endblock %}

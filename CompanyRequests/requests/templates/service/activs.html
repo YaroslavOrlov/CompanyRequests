@@ -1,0 +1,42 @@
+﻿{% extends "base.html"%}
+{% block title %} Activs: {% endblock %}
+
+{% block main %}
+<table>
+    <tr>
+        <th>&ensp;&ensp;</th>
+        <th>&ensp;&ensp;</th>
+        <th>&ensp;&ensp;</th>
+    </tr>
+    {% for activ in object_list %}
+        <tr>
+            <td>
+                <p>
+                    {{ activ.cub_number }}
+                </p>
+            </td>
+             <td>
+                <p>
+                    {{ activ.department.name }}
+                </p>
+            </td>
+            <td>
+                {% block rightmenu %}
+                      <a href="{% url "activ_edit" activ.id %}">Edit</a> |
+                      <a href="{% url "activ_delete" activ.id %}">Delete</a>
+                {% endblock %}
+            </td>
+        </tr>
+    {% endfor %}
+</table> 
+<form action="{% url "activ_add" %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="cub_number" />
+      <select name="department_id">
+        {% for department in departments %}
+            <option value="{{ department.id }}">{{ department.name }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Add activ" />
+</form>
+{% endblock %}
