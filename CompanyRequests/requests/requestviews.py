@@ -22,10 +22,7 @@ class RequestsListView(ListView):
    
     def get_context_data(self, **kwargs):
         context = super(RequestsListView, self).get_context_data(**kwargs)
-        try:
-            context["pn"] = self.request.GET["page"]
-        except KeyError:
-            context["pn"] = "1"
+        context["pn"] = self.request.GET.get("page", '1')
         return context
 
 class UserRequestsListView(ListView):

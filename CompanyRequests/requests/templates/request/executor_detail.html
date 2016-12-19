@@ -1,7 +1,7 @@
-﻿{% extends "base.html"%}
+{% extends "app/layout.html" %}
 {% block title %} Details about executor: {% endblock %}
 
-{% block main %}
+{% block content %}
 <p>Name: {{ object.user.username }}</p>
 <p>Position: {{ object.position }}</p>
 {% endblock %}

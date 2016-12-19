@@ -1,4 +1,4 @@
-﻿{% extends "base.html"%}
+{% extends "app/layout.html" %}
 
 {% block title %}
 {% endblock %}
@@ -9,7 +9,7 @@
     <p>Summary: {{ object_list | length }}</p>
 {% endblock %}
 
-{% block main %}
+{% block content %}
     <h2>Requests:</h2>
     <table cellspacing="5" cellpadding="10" border="1" width="80%">
         {% for request in object_list %}
@@ -19,7 +19,7 @@
                       {{ forloop.counter }}
                     </p>
                 </td>
-                         <td>
+                 <td>
                     {% if request.status <= 1 %}
                         <img src="../../static/images/status1.png" title="Заявка открыта" class="tdImage" />
                     {% elif request.status == 2 %}
@@ -54,7 +54,7 @@
                       </p>
                 </td>
                 {% block rightmenu %}
-                    <td>  
+                 <td>  
                     <div>
                         <a href="{% url "request_detail" request.id %}">
                             <img src="../../static/images/info.png" class="tdImage" title="Detail" />

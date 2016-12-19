@@ -15,8 +15,11 @@ class UsersListView(ListView):
     paginate_by = 1
 
     def get(self, request, *args, **kwargs):
-        return super(UsersListView, self).get(request, *args, **kwargs)
-   
+        self.role_id = self.request.GET.get("role_id", 'all')
+        self.department_id = self.request.GET.get("department_id", 'all')
+        context = super(UsersListView, self).get(request, *args, **kwargs)
+        return context
+      
     def get_context_data(self, **kwargs):
         context = super(UsersListView, self).get_context_data(**kwargs)
         context["departments"] = Department.objects.order_by("name")
@@ -28,23 +31,11 @@ class UsersListView(ListView):
         return context
 
     def get_queryset(self):
-        try:
-            role_id = self.request.GET['role_id']
-        except:
-            role_id = 'all'
-        try:
-            department_id = self.request.GET['department_id']
-        except:
-            department_id = 'all'
-
-        if (role_id == 'all' and department_id == 'all'):
-            return UserProfile.objects.all();
-        if (role_id == 'all' and department_id != 'all'):
-            object_list = UserProfile.objects.filter(department = department_id)
-        elif(role_id != 'all' and department_id == 'all'):
-            object_list = UserProfile.objects.filter(role = role_id)
-        else:
-            object_list = UserProfile.objects.filter(department = department_id, role = role_id)
+        object_list = UserProfile.objects.all()
+        if (self.role_id != 'all'):
+            object_list = object_list.filter(role = self.role_id)
+        if (self.department_id != 'all'):
+            object_list = object_list.filter(department = self.department_id)
         return object_list
 
 @method_decorator(permission_required("request.user_profile.can_add_user"), name='dispatch')

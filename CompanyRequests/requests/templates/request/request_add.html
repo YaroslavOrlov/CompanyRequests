@@ -1,7 +1,7 @@
-﻿{% extends "base.html"%}
+{% extends "app/layout.html" %}
 {% block title %} Add new request: {% endblock %}
 
-{% block main %}
+{% block content %}
 <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}

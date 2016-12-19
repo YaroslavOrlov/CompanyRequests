@@ -82,7 +82,6 @@
     <Folder Include="requests\static\" />
     <Folder Include="requests\static\css\" />
     <Folder Include="requests\static\images\" />
-    <Folder Include="requests\static\scripts\" />
     <Folder Include="requests\templates\account\" />
     <Folder Include="requests\templates\" />
     <Folder Include="requests\templates\request\" />
@@ -102,13 +101,11 @@
     <Content Include="requests\static\images\status3.png" />
     <Content Include="requests\static\images\status4.png" />
     <Content Include="requests\static\images\status5.png" />
-    <Content Include="requests\static\scripts\requestModal.js" />
     <Content Include="requests\templates\account\users.html" />
     <Content Include="requests\templates\account\user_add.html" />
     <Content Include="requests\templates\account\user_profile_add.html" />
     <Content Include="requests\templates\account\user_profile_delete.html" />
     <Content Include="requests\templates\account\user_profile_edit.html" />
-    <Content Include="requests\templates\base.html" />
     <Content Include="requests\templates\request\executor_detail.html" />
     <Content Include="requests\templates\request\life_cycle_detail.html" />
     <Content Include="requests\templates\request\own_requests.html" />

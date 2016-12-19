@@ -47,7 +47,7 @@ class LifeCycle(models.Model):
 
     id = models.AutoField(primary_key = True)
     opened = models.DateField(auto_now_add = True, verbose_name = "opened")
-    distributed = models.DateField(null = True, verbose_name = "dustributed")
+    distributed = models.DateField(null = True, verbose_name = "distributed")
     proccesing = models.DateField(null = True, verbose_name = "proccesing")
     checking = models.DateField(null = True, verbose_name = "checking")
     closed = models.DateField(null = True, verbose_name = "closed")
