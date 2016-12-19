@@ -5,12 +5,14 @@ from django.views.generic.list import ListView
 from requests.models import UserProfile, Role, Department
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.decorators import permission_required
+from django.utils.decorators import method_decorator
 
 
 class UsersListView(ListView):
     model = UserProfile
     template_name = "account/users.html"
-    paginator_by = 10
+    paginate_by = 1
 
     def get(self, request, *args, **kwargs):
         return super(UsersListView, self).get(request, *args, **kwargs)
@@ -45,7 +47,7 @@ class UsersListView(ListView):
             object_list = UserProfile.objects.filter(department = department_id, role = role_id)
         return object_list
 
-
+@method_decorator(permission_required("request.user_profile.can_add_user"), name='dispatch')
 class CreateUserView(CreateView):
     model = User
     fields = ["username", "password", "first_name", "last_name", "email", "is_superuser", "is_staff", "is_active"]
@@ -60,7 +62,7 @@ class CreateUserView(CreateView):
         self.success_url = reverse("accounts")
         return super().post(request, *args, **kwargs)  
      
-
+@method_decorator(permission_required("request.user_profile.can_add_user_profile"), name='dispatch')
 class CreateUserProfileView(CreateView):
     model = UserProfile
     fields = ["user", "department", "position", "role"]
@@ -70,6 +72,7 @@ class CreateUserProfileView(CreateView):
         self.success_url = reverse("accounts")
         return super().post(request, *args, **kwargs)  
 
+@method_decorator(permission_required("request.user_profile.can_change_user_proflle"), name='dispatch')
 class UpdateUserProfile(UpdateView):
     model = UserProfile
     fields = ["user", "department", "position", "role"]
@@ -80,6 +83,7 @@ class UpdateUserProfile(UpdateView):
         self.success_url = reverse("accounts")
         return super().post(request, *args, **kwargs)  
 
+@method_decorator(permission_required("request.user_profile.can_delete_user_proflle"), name='dispatch')
 class DeleteUserProfile(DeleteView):
     model = UserProfile
     template_name = "account/user_profile_delete.html"

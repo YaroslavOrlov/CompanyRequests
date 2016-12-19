@@ -5,12 +5,14 @@ from django.views.generic.list import ListView
 from requests.models import Department, Activ, Category
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.decorators import permission_required
+from django.utils.decorators import method_decorator
 
 #Departments
 class DepartmentListView(ListView):
     model = Department
     template_name = "service/departments.html"
-    paginator_by = 10
+    paginate_by = 10
 
     def get(self, request, *args, **kwargs):
         return super(DepartmentListView, self).get(request, *args, **kwargs)
@@ -26,6 +28,7 @@ class DepartmentListView(ListView):
     def get_queryset(self):
         return Department.objects.all()
 
+@method_decorator(permission_required("request.department.can_add_department"), name='dispatch')
 class CreateDepartmentView(CreateView):
     model = Department
     fields = ["name"]
@@ -34,6 +37,7 @@ class CreateDepartmentView(CreateView):
         self.success_url = reverse("services")
         return super().post(request, *args, **kwargs)  
 
+@method_decorator(permission_required("request.department.can_change_department"), name='dispatch')
 class UpdateDepartmentView(UpdateView):
     model = Department
     fields = ["name"]
@@ -43,7 +47,8 @@ class UpdateDepartmentView(UpdateView):
     def post(self, request, *args, **kwargs):
         self.success_url = reverse("services")
         return super().post(request, *args, **kwargs)  
-
+    
+@method_decorator(permission_required("request.department.can_delete_department"), name='dispatch')
 class DeleteDepartmentView(DeleteView):
     model = Department
     template_name = "service/department_delete.html"
@@ -62,7 +67,7 @@ class DeleteDepartmentView(DeleteView):
 class ActivListView(ListView):
     model = Activ
     template_name = "service/activs.html"
-    paginator_by = 10
+    paginate_by = 10
 
     def get(self, request, *args, **kwargs):
         return super(ActivListView, self).get(request, *args, **kwargs)
@@ -79,6 +84,7 @@ class ActivListView(ListView):
     def get_queryset(self):
         return Activ.objects.all()
 
+@method_decorator(permission_required("request.activ.can_add_activ"), name='dispatch')
 class CreateActivView(CreateView):
     model = Activ
     fields = ["cub_number"]
@@ -91,6 +97,7 @@ class CreateActivView(CreateView):
         self.success_url = reverse("activs")
         return super().post(request, *args, **kwargs)  
 
+@method_decorator(permission_required("request.activ.can_change_activ"), name='dispatch')
 class UpdateActivView(UpdateView):
     model = Activ
     fields = ["cub_number", "department"]
@@ -101,6 +108,7 @@ class UpdateActivView(UpdateView):
         self.success_url = reverse("activs")
         return super().post(request, *args, **kwargs)  
 
+@method_decorator(permission_required("request.activ.can_delete_activ"), name='dispatch')
 class DeleteActivView(DeleteView):
     model = Activ
     template_name = "service/activ_delete.html"
@@ -119,7 +127,7 @@ class DeleteActivView(DeleteView):
 class CategoryListView(ListView):
     model = Category
     template_name = "service/categories.html"
-    paginator_by = 10
+    paginate_by = 10
 
     def get(self, request, *args, **kwargs):
         return super(CategoryListView, self).get(request, *args, **kwargs)
@@ -135,6 +143,7 @@ class CategoryListView(ListView):
     def get_queryset(self):
         return Category.objects.all()
 
+@method_decorator(permission_required("request.category.can_add_category"), name='dispatch')
 class CreateCategoryView(CreateView):
     model = Category
     fields = ["name"]
@@ -143,6 +152,7 @@ class CreateCategoryView(CreateView):
         self.success_url = reverse("categories")
         return super().post(request, *args, **kwargs)  
 
+@method_decorator(permission_required("request.category.can_change_category"), name='dispatch')
 class UpdateCategoryView(UpdateView):
     model = Category
     fields = ["name"]
@@ -153,6 +163,7 @@ class UpdateCategoryView(UpdateView):
         self.success_url = reverse("categories")
         return super().post(request, *args, **kwargs)  
 
+@method_decorator(permission_required("request.category.can_delete_category"), name='dispatch')
 class DeleteCategoryView(DeleteView):
     model = Category
     template_name = "service/category_delete.html"

@@ -46,14 +46,14 @@ class LifeCycle(models.Model):
         verbose_name_plural = "Life cycles"
 
     id = models.AutoField(primary_key = True)
-    opened = models.DateField(verbose_name = "opened")
+    opened = models.DateField(auto_now_add = True, verbose_name = "opened")
     distributed = models.DateField(null = True, verbose_name = "dustributed")
     proccesing = models.DateField(null = True, verbose_name = "proccesing")
     checking = models.DateField(null = True, verbose_name = "checking")
     closed = models.DateField(null = True, verbose_name = "closed")
 
     def __str__(self):
-        return self.id
+        return 'Request: {} '.format(self.id)
 
 
 class UserProfile(models.Model):

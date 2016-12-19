@@ -40,7 +40,7 @@
 
 {% block main %}
     <h2>Users:</h2>
-    <table>
+    <table cellspacing="5" cellpadding="10" border="1" width="80%">
         <tr>
             <th>Full name</th>
             <th>Login</th>
@@ -94,9 +94,9 @@
             </tr>
         {% endfor %}
     </table>
-    <a href="{% url "user_add" %}">Add new user</a>
+    <a href="{% url "user_add" %}">Add new user</a> |
     <a href="{% url "user_profile_add" %}">Add new user profile</a>
-    {% if paginator.num_pages > 0 %}
+    {% if paginator.num_pages > 1 %}
         <div id="pagination">
             {% if page_obj.has_previous %}
                 <div id="previous-page">

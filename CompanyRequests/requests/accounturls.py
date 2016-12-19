@@ -8,6 +8,4 @@ urlpatterns = [
     url(r'^user/delete/(?:(?P<user_id>\d+)/)?$', accountviews.DeleteUserProfile.as_view(), name = 'user_delete'),
     url(r'^user/add/$', accountviews.CreateUserView.as_view(), name = 'user_add'),
     url(r'^user_profile/add/$', accountviews.CreateUserProfileView.as_view(), name = 'user_profile_add'),
-    #url(r'^(?:(?P<id>\d+)/)?$', views.products, name = 'products'),
-    #url(r'^product/(?P<id>\d+)/$', views.product, name = 'product'),
 ]

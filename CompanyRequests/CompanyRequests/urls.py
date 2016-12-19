@@ -45,4 +45,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include("requests.accounturls")),
     url(r'^services/', include("requests.serviceurls")),
+    url(r'^requests/', include("requests.requesturls")),
 ]

@@ -2,30 +2,33 @@
 {% block title %} Categories: {% endblock %}
 
 {% block main %}
-<table>
-    <tr>
-        <th>&ensp;&ensp;</th>
-        <th>&ensp;&ensp;</th>
-    </tr>
-    {% for category in object_list %}
-        <tr>
-            <td>
-                <p>
-                    {{ category.name }}
-                </p>
-            </td>
-            <td>
-                {% block rightmenu %}
-                      <a href="{% url "category_edit" category.id %}">Edit</a> |
-                      <a href="{% url "category_delete" category.id %}">Delete</a>
-                {% endblock %}
-            </td>
-        </tr>
-    {% endfor %}
-</table> 
-<form action="{% url "category_add" %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="name" />
-    <input type="submit" value="Add category" />
-</form>
+    <fieldset>
+        <legend>New category</legend>
+        <div class="editor-field">
+        <form action="{% url "category_add" %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="name" />
+            <input type="submit" value="Add category" />
+        </form>
+        </div>
+        <div class="editor-label">
+             <table>
+                {% for category in object_list %}
+                    <tr>
+                        <td>
+                            <p>
+                                {{ category.name }}
+                            </p>
+                        </td>
+                        <td>
+                            {% block rightmenu %}
+                                  <a href="{% url "category_edit" category.id %}">Edit</a> |
+                                  <a href="{% url "category_delete" category.id %}">Delete</a>
+                            {% endblock %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table> 
+        </div>
+    </fieldset>
 {% endblock %}

@@ -47,6 +47,12 @@
     <Compile Include="requests\apps.py" />
     <Compile Include="requests\migrations\__init__.py" />
     <Compile Include="requests\models.py" />
+    <Compile Include="requests\requesturls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="requests\requestviews.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="requests\serviceurls.py">
       <SubType>Code</SubType>
     </Compile>
@@ -74,17 +80,42 @@
     <Folder Include="requests\" />
     <Folder Include="requests\migrations\" />
     <Folder Include="requests\static\" />
+    <Folder Include="requests\static\css\" />
+    <Folder Include="requests\static\images\" />
+    <Folder Include="requests\static\scripts\" />
     <Folder Include="requests\templates\account\" />
     <Folder Include="requests\templates\" />
+    <Folder Include="requests\templates\request\" />
     <Folder Include="requests\templates\service\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="requests\static\css\main.css" />
+    <Content Include="requests\static\images\executor.png" />
+    <Content Include="requests\static\images\info.png" />
+    <Content Include="requests\static\images\lifecycle.png" />
+    <Content Include="requests\static\images\prior1.png" />
+    <Content Include="requests\static\images\prior2.png" />
+    <Content Include="requests\static\images\prior3.png" />
+    <Content Include="requests\static\images\prior4.png" />
+    <Content Include="requests\static\images\status1.png" />
+    <Content Include="requests\static\images\status2.png" />
+    <Content Include="requests\static\images\status3.png" />
+    <Content Include="requests\static\images\status4.png" />
+    <Content Include="requests\static\images\status5.png" />
+    <Content Include="requests\static\scripts\requestModal.js" />
     <Content Include="requests\templates\account\users.html" />
     <Content Include="requests\templates\account\user_add.html" />
     <Content Include="requests\templates\account\user_profile_add.html" />
     <Content Include="requests\templates\account\user_profile_delete.html" />
     <Content Include="requests\templates\account\user_profile_edit.html" />
     <Content Include="requests\templates\base.html" />
+    <Content Include="requests\templates\request\executor_detail.html" />
+    <Content Include="requests\templates\request\life_cycle_detail.html" />
+    <Content Include="requests\templates\request\own_requests.html" />
+    <Content Include="requests\templates\request\requests.html" />
+    <Content Include="requests\templates\request\request_add.html" />
+    <Content Include="requests\templates\request\request_delete.html" />
+    <Content Include="requests\templates\request\request_detail.html" />
     <Content Include="requests\templates\service\activs.html" />
     <Content Include="requests\templates\service\activ_delete.html" />
     <Content Include="requests\templates\service\activ_edit.html" />

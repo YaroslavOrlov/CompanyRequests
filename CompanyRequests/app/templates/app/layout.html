@@ -27,11 +27,43 @@
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
+                <div class="btn-group">
+                  <button class="btn btn-mini">Directories</button>
+                  <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                      <li><a href="{% url "services" %}">Departments</a></li>
+                      <li><a href="{% url "activs" %}">Activs</a></li>
+                      <li><a href="{% url "categories" %}">Categories</a></li>
+                  </ul>
+                </div>
+                <div class="btn-group">
+                  <button class="btn btn-mini">Requests</button>
+                  <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                       <li><a href="{% url "requests_own" %}">My requests</a></li>
+                       <li><a href="{% url "requests" %}">All requests</a></li>
+                       <li><a href="{% url "request_add" %}">Create request</a></li>
+                  </ul>
+                </div>
+                   <div class="btn-group">
+                  <button class="btn btn-mini">Accounts</button>
+                  <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                       <li><a href="{% url "accounts" %}">Accounts</a></li>
+                  </ul>
+                </div>
+
                 {% include 'app/loginpartial.html' %}
             </div>
         </div>
     </div>
-
+    
     <div class="container body-content">
 {% block content %}{% endblock %}
         <hr/>

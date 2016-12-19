@@ -1,0 +1,111 @@
+﻿{% extends "base.html"%}
+
+{% block title %}
+{% endblock %}
+
+
+{% block header %}
+    <h1>Requests list</h1>
+    <p>Summary: {{ object_list | length }}</p>
+{% endblock %}
+
+{% block main %}
+    <h2>Requests:</h2>
+    <table cellspacing="5" cellpadding="10" border="1" width="80%">
+        {% for request in object_list %}
+            <tr>
+                <td>
+                    <p>
+                      {{ forloop.counter }}
+                    </p>
+                </td>
+                <td>
+                    {% if request.status <= 1 %}
+                        <img src="../../static/images/status1.png" title="Заявка открыта" class="tdImage" />
+                    {% elif request.status == 2 %}
+                        <img src="../../static/images/status2.png" title="Заявка распределена" class="tdImage" />
+                    {% elif request.status == 3 %}
+                        <img src="../../static/images/status3.png" title="Заявка в процессе" class="tdImage" />
+                    {% elif request.status == 4 %}
+                        <img src="../../static/images/status4.png" title="Заявка на проверке" class="tdImage" />
+                    {% elif request.status >= 5 %}
+                        <img src="../../static/images/status5.png" title="Заявка закрыта" class="tdImage" />
+                    {% endif %}
+                </td>
+                <td>
+                    {% if request.status <= 1 %}
+                        <img src="../../static/images/prior1.png" title="Заявка открыта" class="tdImage" />
+                    {% elif request.status == 2 %}
+                        <img src="../../static/images/prior2.png" title="Заявка распределена" class="tdImage" />
+                    {% elif request.status == 3 %}
+                        <img src="../../static/images/prior3.png" title="Заявка в процессе" class="tdImage" />
+                    {% elif request.status >= 4 %}
+                        <img src="../../static/images/prior4.png" title="Заявка на проверке" class="tdImage" />
+                    {% endif %}
+                </td>
+                <td>
+                      <p>
+                        {{ request.lifecycle.opened }}
+                      </p>
+                </td>
+                <td>
+                      <p>
+                        {{ request.name }}
+                      </p>
+                </td>
+                {% block rightmenu %}
+                <td>  
+                    <div>
+                        <a href="{% url "request_detail" request.id %}">
+                            <img src="../../static/images/info.png" class="tdImage" title="Detail" />
+                        </a> 
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <a href="{% url "lifecycle_detail" request.lifecycle.id %}">
+                             <img src="../../static/images/lifecycle.png" class="tdImage" title="Lifecycle" />
+                        </a> 
+                    </div>
+                </td>
+                <td>
+                     <div>
+                         <a href="{% url "executor_detail" request.user.user.id %}">
+                             <img src="../../static/images/executor.png" class="tdImage" title="Executor" />
+                         </a> 
+                     </div>
+                </td>
+                 {% endblock %}
+            </tr>
+        {% endfor %}
+    </table>
+    {% if paginator.num_pages > 1 %}
+        <div id="pagination">
+            {% if page_obj.has_previous %}
+                <div id="previous-page">
+                    <a href="{% url "requests" %}?page={{ page_obj.previous_page_number }}">&lt;</a>
+                </div>
+            {% endif %}
+            {% if page_obj.has_next %}
+                <div id="next-page">
+                    <a href="{% url "requests" %}?page={{ page_obj.next_page_number }}">&gt;</a>
+                </div>
+            {% endif %}
+            <div id="num-pages">
+                {% for pn in paginator.page_range %}
+                    {% if not forloop.first %}
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    {% endif %}
+                    {% if page_obj.number != pn %}
+                        <a href="{% url "requests" %}?page={{ pn }}">
+                    {% endif %}
+                    {{ pn }}
+                    {% if page_obj.number != pn %}
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

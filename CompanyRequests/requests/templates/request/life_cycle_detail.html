@@ -1,0 +1,10 @@
+﻿{% extends "base.html"%}
+{% block title %} Lyfe cycle detail: {% endblock %}
+
+{% block main %}
+<p>Opened: {{ object.opened }}</p>
+<p>Distributed: {{ object.distributed}}</p>
+<p>In progress: {{ object.proccesing }}</p>
+<p>Chcking: {{ object.checking }}</p>
+<p>Closed: {{ object.closed }}</p>
+{% endblock %}
